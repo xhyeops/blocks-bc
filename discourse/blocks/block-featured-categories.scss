@@ -1,0 +1,74 @@
+.block-featured-categories {
+  &__layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    gap: var(--space-5);
+    width: 100%;
+
+    @include viewport.until(xl) {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      flex-direction: row;
+      align-items: center;
+      gap: var(--space-3);
+    }
+  }
+
+  &__footer {
+    display: flex;
+    align-items: center;
+
+    @include viewport.from(lg) {
+      grid-column: 1 / -1;
+      justify-content: center;
+    }
+  }
+
+  &__all-link {
+    color: var(--tertiary);
+    font-weight: 700;
+    text-decoration: none;
+    font-size: var(--font-down-1);
+
+    &:hover,
+    &:focus-visible {
+      color: var(--tertiary-hover);
+      text-decoration: underline;
+    }
+  }
+
+  &__card {
+    &--has-description {
+      flex-direction: column;
+      row-gap: var(--space-4);
+      padding: var(--space-8);
+      min-height: 8rem;
+    }
+  }
+
+  // Connvert cards to pills on mobile
+  @include viewport.until(xl) {
+    &__layout .category-card {
+      &__layout {
+        padding: var(--space-2) var(--space-2) var(--space-2) var(--space-2);
+        border-radius: var(--d-border-radius);
+      }
+
+      &__logo {
+        margin-inline-end: var(--space-2);
+        height: 1.75rem;
+        width: 1.75rem;
+        border-radius: var(--d-border-radius);
+
+        .d-icon {
+          font-size: 1rem;
+        }
+      }
+
+      &__name {
+        font-size: var(--font-down-1);
+      }
+    }
+  }
+}
